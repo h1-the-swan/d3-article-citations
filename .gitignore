@@ -1,0 +1,10 @@
+node_modules
+public/bundle*
+public/data/
+notebooks/
+.env
+*.log
+src/data
+example/data
+
+lib/

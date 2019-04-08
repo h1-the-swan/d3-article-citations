@@ -1,0 +1,42 @@
+{
+  "name": "nodelink-vis-time-directed",
+  "version": "0.1.0",
+  "description": "Interactive force-directed node-link visualization to explore directed citations",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "build": "webpack --env dev && webpack --env build",
+    "dev": "webpack --progress --colors --watch --env dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h1-the-swan/nodelink-vis-time-directed.git"
+  },
+  "keywords": [
+    "D3",
+    "network",
+    "force-directed",
+    "node-link"
+  ],
+  "author": "Jason Portenoy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/h1-the-swan/nodelink-vis-time-directed/issues"
+  },
+  "homepage": "https://github.com/h1-the-swan/nodelink-vis-time-directed#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-register": "^6.26.0",
+    "change-case": "^3.1.0",
+    "d3": "^3.5.17",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "yargs": "^13.2.2"
+  }
+}
