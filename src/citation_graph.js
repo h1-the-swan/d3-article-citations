@@ -1,6 +1,6 @@
 var json_fname = '../Climate_change_network.json'
 
-d3.json(json_fname, function(error, data) {
+function NodelinkVisTimeDirected(data) {
 	var w = 960,
 		h = 400;
 	var opacityVals = {
@@ -268,4 +268,6 @@ d3.json(json_fname, function(error, data) {
 
 
 
-});
+}
+
+export { NodelinkVisTimeDirected };
