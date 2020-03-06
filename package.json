@@ -1,8 +1,8 @@
 {
-  "name": "nodelink-vis-time-directed",
+  "name": "nodelink_vis_time_directed",
   "version": "0.1.0",
   "description": "Interactive force-directed node-link visualization to explore directed citations",
-  "main": "index.js",
+  "main": "lib/nodelink_vis_time_directed.js",
   "directories": {
     "example": "example"
   },
