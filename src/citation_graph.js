@@ -56,7 +56,8 @@ class NodelinkVisTimeDirected {
 				'linkFaded': .05
 			}
 			var efScale = d3.scale.linear()
-				.domain(d3.extent(data.nodes, function(d) { return d.eigenfactor_score; }))
+				// .domain(d3.extent(data.nodes, function(d) { return d.eigenfactor_score; }))
+				.domain(d3.extent(data.nodes, function(d) { return d.node_rank; }))
 				.range([0, 10]);
 
 			var force = d3.layout.force()
@@ -68,8 +69,21 @@ class NodelinkVisTimeDirected {
 				.on("dragstart", function() { d3.event.sourceEvent.stopPropagation(); });
 
 			console.log(data);
+			// get links as references
+			// https://stackoverflow.com/questions/16824308/d3-using-node-attribute-for-links-instead-of-index-in-array
+			var links = [];
+			data.links.forEach(function(e) { 
+				// Get the source and target nodes
+				var sourceNode = data.nodes.filter(function(n) { return n.id === e.source; })[0],
+					targetNode = data.nodes.filter(function(n) { return n.id === e.target; })[0];
+
+				// Add the edge to the array
+				links.push({source: sourceNode, target: targetNode});
+			});
+			console.log(links);
 			force.nodes(data.nodes)
-				.links(data.links)
+				// .links(data.links)
+				.links(links)
 				.start();
 
 			var chart = d3.select(selItem)
@@ -96,7 +110,8 @@ class NodelinkVisTimeDirected {
 			var group = chart.append("g");
 
 			var link = group.selectAll(".link")
-				.data(data.links)
+				// .data(data.links)
+				.data(links)
 				.enter().append("line")
 				.attr("class", "link")
 			// draw arrowhead (see defs above)
@@ -109,7 +124,8 @@ class NodelinkVisTimeDirected {
 			node.append("circle")
 				.attr("class", "node")
 				.attr("r", function(d) {
-					d.radius = 2 + efScale(d.eigenfactor_score);
+					// d.radius = 2 + efScale(d.eigenfactor_score);
+					d.radius = 2 + efScale(d.node_rank);
 					return d.radius;
 				})
 				.style("fill", "darksalmon")
@@ -120,7 +136,8 @@ class NodelinkVisTimeDirected {
 				// for tooltip
 				var text = d.title
 					+ ", "
-					+ d.authors.join(", ")
+					// + d.authors.join(", ")
+					+ d.display_authors
 					+ ", "
 					+ d.journal
 					+ ", "
@@ -166,7 +183,10 @@ class NodelinkVisTimeDirected {
 			var label = node.append("text")
 				.attr("class", "nodeLabel")
 				.text(function(d) {
-					var AuthorName = d.authors[0].split(" ").slice(-1);
+					// var AuthorName = d.authors[0].split(" ").slice(-1);
+					// var AuthorName = d.display_authors;
+					// var AuthorName = "";
+					var AuthorName = d.display_authors.split(",")[0].split(" ").slice(-1)[0]; // last name of first author
 					return AuthorName + "," + d.year;
 				});
 
