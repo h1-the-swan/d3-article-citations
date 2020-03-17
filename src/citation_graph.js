@@ -1,4 +1,8 @@
-class NodelinkVisTimeDirected {
+import * as d3 from 'd3';
+import jQuery from 'jquery';
+const $ = jQuery;
+
+class CitationVis {
 	constructor(opts = {}) {
 		const defaults = {
 			element: null,
@@ -338,4 +342,5 @@ class NodelinkVisTimeDirected {
 
 }
 
-export { NodelinkVisTimeDirected };
+// export { CitationVis };
+export default CitationVis;

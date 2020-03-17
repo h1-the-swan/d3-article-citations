@@ -1,2 +1,2 @@
-import { NodelinkVisTimeDirected } from './citation_graph.js';
-export { NodelinkVisTimeDirected };
+import CitationVis from './citation_graph.js';
+export default CitationVis;
