@@ -61,8 +61,8 @@ class NodelinkVisTimeDirected {
 				.range([0, 10]);
 
 			var force = d3.layout.force()
-				.charge(-60)
-				.linkDistance(30)
+				.charge(-100)
+				.linkDistance(80)
 				.size([w,h]);
 			// http://stackoverflow.com/questions/17953106/why-does-d3-js-v3-break-my-force-graph-when-implementing-zooming-when-v2-doesnt/17976205#17976205
 			var drag = force.drag()
@@ -139,7 +139,7 @@ class NodelinkVisTimeDirected {
 					// + d.authors.join(", ")
 					+ d.display_authors
 					+ ", "
-					+ d.journal
+					+ d.venue
 					+ ", "
 					+ d.year;
 				return text;
